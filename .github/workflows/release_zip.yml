@@ -1,4 +1,4 @@
-name: Realese zip
+name: realese
 
 on:
   push:
@@ -33,10 +33,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
 
       - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1
+        uses: actions/upload-release-asset@v2
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./tests/calculator.py/__pycache__/calculator.cpython-39.pyc
+          asset_path: ./tests/__pycache__/calculator.cpython-39.pyc
           asset_name: tests
           asset_content_type: application/octet-stream
         env:
