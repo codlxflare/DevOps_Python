@@ -2,12 +2,12 @@ name: Docker auto test
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "develop"]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "develop"]
 
 jobs:
-  build-docker:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
