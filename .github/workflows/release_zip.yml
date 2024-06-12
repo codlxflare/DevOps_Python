@@ -19,9 +19,9 @@ jobs:
 
       - name: Build project
         run: |
-          python -m compileall ./calculator/calculator.py
+          python -m compileall ./tests/calculator.py
 
-      - name: Create GitHub release
+      - name: Git release
         id: create_release
         uses: actions/create-release@v3
         with:
