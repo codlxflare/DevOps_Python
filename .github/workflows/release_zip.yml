@@ -23,7 +23,7 @@ jobs:
 
       - name: Git release
         id: create_release
-        uses: actions/create-release@v3
+        uses: actions/create-release@v2
         with:
           tag_name: v${{ github.run_number }}
           release_name: Release v${{ github.run_number }}
@@ -36,7 +36,7 @@ jobs:
         uses: actions/upload-release-asset@v2
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./tests/__pycache__/calculator.cpython-39.pyc
+          asset_path: ./tests/__pycache__/calculator.cpython-312.pyc
           asset_name: tests
           asset_content_type: application/octet-stream
         env:
