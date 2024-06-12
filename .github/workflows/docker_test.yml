@@ -1,0 +1,29 @@
+name: Docker auto test
+
+on:
+  push:
+    branches: [ "main", "develop"]
+  pull_request:
+    branches: [ "main", "develop"]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v2
+
+      - name: Login and Password to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.USERNAME_DOCKER }}
+          password: ${{ secrets.PASSWORD_DOCKER }}
+
+      - name: Build and push Docker
+        run: |
+          docker build -t ${{ secrets.USERNAME_DOCKER }}/devops:ver-${{ github.event.number }} .
+          docker push ${{ secrets.USERNAME_DOCKER }}/devops:ver-${{ github.event.number }}
